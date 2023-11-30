@@ -1,0 +1,16 @@
+.form {
+  background-color: beige;
+  position: fixed;
+  left: 15%;
+  top: 10%;
+  height: 55vh;
+  width: 70vw;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px #919181;
+  transition: all 1000ms linear;
+  opacity: 0;
+}
+
+.visivel {
+  opacity: 0.8;
+}
