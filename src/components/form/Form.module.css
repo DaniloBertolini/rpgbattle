@@ -10,3 +10,7 @@
   padding: 24px 20px 20px 20px;
   text-align: center;
 }
+
+.container {
+  display: flex;
+}

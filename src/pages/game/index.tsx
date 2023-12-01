@@ -12,24 +12,27 @@ function Game() {
   }, []);
 
   return (
-    <main className={ `${styles.box} ${isVisible ? styles.visivel : ''}` }>
-      <h1 className={ styles.h1 }>RPG Battle</h1>
-      <div className={ styles.buttonsBattle }>
-        <button
-        onClick={() => setButtonChoice(1)}
-        className={ `${styles.button} ${buttonChoice === 1 ? styles.active : ''}` }>PVP</button>
-        <button
-        onClick={() => setButtonChoice(2)}
-        className={ `${styles.button} ${buttonChoice === 2 ? styles.active : ''}` }>PVE</button>
-      </div>
-
-      {(buttonChoice === 1) && (
-        <FormPVP/>
-      )}
-      {(buttonChoice === 2) && (
-        <FormPVE/>
-      )}
-    </main>
+    <>
+      <section className={ `${styles.box} ${isVisible ? styles.visivel : ''}` } />
+      <main className={ styles.boxLimit }>
+        <h1 className={ styles.h1 }>RPG Battle</h1>
+        <div className={ styles.buttonsBattle }>
+          <button
+          onClick={() => setButtonChoice(1)}
+          className={ `${styles.button} ${buttonChoice === 1 ? styles.active : ''}` }>PVP</button>
+          <button
+          onClick={() => setButtonChoice(2)}
+          className={ `${styles.button} ${buttonChoice === 2 ? styles.active : ''}` }>PVE</button>
+        </div>
+    
+        {(buttonChoice === 1) && (
+          <FormPVP/>
+        )}
+        {(buttonChoice === 2) && (
+          <FormPVE/>
+        )}
+      </main>
+    </>
   )
 }
 

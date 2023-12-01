@@ -1,13 +1,21 @@
 .box {
-  align-items: center;
   background-color: beige;
   border-radius: 15px;
   box-shadow: 0 10px 15px #919181;
+  height: 55vh;
+  left: 15%;
+  opacity: 0;
+  position: fixed;
+  top: 10%;
+  width: 70vw;
+}
+
+.boxLimit {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 55vh;
   left: 15%;
-  opacity: 0;
   position: fixed;
   top: 10%;
   transition: all 1000ms linear;
