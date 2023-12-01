@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import styles from './NewGame.module.css'
+import styles from './ButtonNewGame.module.css'
 
-function NewGame() {
+function ButtonNewGame() {
   return (
     <Link to="/game">
       <button
@@ -12,4 +12,4 @@ function NewGame() {
   )
 }
 
-export default NewGame
+export default ButtonNewGame

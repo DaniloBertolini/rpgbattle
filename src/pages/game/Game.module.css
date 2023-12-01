@@ -1,16 +1,59 @@
-.form {
+.box {
+  align-items: center;
   background-color: beige;
-  position: fixed;
-  left: 15%;
-  top: 10%;
-  height: 55vh;
-  width: 70vw;
   border-radius: 15px;
   box-shadow: 0 10px 15px #919181;
-  transition: all 1000ms linear;
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  left: 15%;
   opacity: 0;
+  position: fixed;
+  top: 10%;
+  transition: all 1000ms linear;
+  width: 70vw;
 }
 
 .visivel {
   opacity: 0.8;
+}
+
+.h1 {
+  color: rgb(1, 182, 1);
+  font-family: SuperMario256, monospace;
+  font-size: 3rem;
+  letter-spacing: 5px;
+  margin: 50px 0;
+  text-shadow: 3px 3px 1px brown;
+  transition: all 200ms linear;
+}
+
+.buttonsBattle {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 100px;
+  top: 35px;
+}
+
+.button {
+  background-color: transparent;
+  border: transparent 1px solid;
+  border-radius: 7px;
+  color: #CBE896;
+  cursor: pointer;
+  font-family: SuperMario256;
+  font-size: 1.5rem;
+  padding: 14px 10px 10px 10px;
+  text-shadow: 3px 3px 1px darkgreen;
+  transition: all 200ms linear;
+}
+
+.active {
+  border: 1px solid #C3E19C;
+  box-shadow: 3px 3px 3px brown;
+}
+
+.h1:hover {
+  transform: rotate(-5deg);
 }

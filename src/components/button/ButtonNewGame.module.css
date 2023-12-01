@@ -1,0 +1,18 @@
+.buttonNewGame {
+  background-image: linear-gradient(to top, #aa5732, #ba6d41, #cb8252, #db9864, #ebae77);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px brown;
+  color: beige;
+  font-family: SuperMario256, monospace;
+  font-size: 2rem;
+  padding: 24px 20px 20px 20px;
+  text-align: center;
+  transition: all 100ms linear;
+}
+
+.buttonNewGame:hover {
+  cursor: pointer;
+  opacity: 0.85;
+  transform: scale(1.1);
+}
