@@ -1,42 +1,126 @@
+import { useEffect, useState } from 'react'
 import styles from './Form.module.css'
 
+type TypePlayer = {
+  id?: number,
+  name: string,
+  race: string,
+  class: string
+}
+
 function FormPVP() {
-  const players = [1, 2, 3, 4, 5, 6]
+  const [counterId, setCounterId] = useState(1);
+  const [players, setPlayers] = useState<TypePlayer[]>([])
+
+  useEffect(() => {
+    setCounterId(players.length + 1)
+  }, [players])
+
+  const newPlayer: TypePlayer = {
+    name: 'Player',
+    race: 'Dwarf',
+    class: 'Mage'
+  }
+
+  const addNewPlayer = () => {
+    if (counterId === 5) return;
+    const newObj = {
+      id: counterId,
+      ...newPlayer
+    }
+
+    setPlayers([
+      ...players,
+      newObj
+    ])
+  }
+
+  const updatePlayer = (name: string, value: string, index: number) => {
+    const newObj = players.map((player) => {
+      if (player.id === index + 1) {
+        return {
+          ...player,
+          [name]: value
+        }
+      }
+      return player
+    })
+
+    setPlayers(newObj);
+  }
+
+  const removePlayer = (index: number) => {
+    const newObj = players.filter((player) => (
+      player.id !== index + 1
+    ))
+    verifyIds(newObj)
+  }
+
+  const verifyIds = (newObj: TypePlayer[]) => {
+    const newObj2 = newObj.map((player, index) => {
+      return {
+        ...player,
+        id: index +1
+      }
+    })
+
+    setPlayers(newObj2);
+  }
+
+  const veifyStats = (index: number, name: string, type: "race" | "class") =>
+    (players[index][type] === name) ? true : false
+  
 
   return (
     <>
       <button
+        onClick={ addNewPlayer }
         className={ styles.buttonNewPlayer }>
         Novo Jogador
       </button>
       <form>
-        {players.map((player, index) => (
+        {players.map((_, index) => (
           <div className={ styles.container } key={index}>
             <label>
-              <p>Nome:</p>
-              <input type="text" id='player' placeholder='Name' />
+              <p className={ styles.p }>Nome:</p>
+              <input
+              className={ styles.input }
+              type="text"
+              name="name"
+              value={ players[index].name}
+              onChange={ ({ target }) => updatePlayer(target.name, target.value, index) }/>
             </label>
             <label>
-              <p>Raça:</p>
-              <select name="race">
-                <option value="dwarf">Dwarf</option>
-                <option value="elf">Elf</option>
-                <option value="halfling">Halfling</option>
-                <option value="Orc">Orc</option>
+              <p className={ styles.p }>Raça:</p>
+              <select className={ styles.input } name="race" onChange={ ({ target }) => updatePlayer(target.name, target.value, index) }>
+                <option selected={ veifyStats(index, "Dwarf", "race") } value="Dwarf">Dwarf</option>
+                <option selected={ veifyStats(index, "Elf", "race") } value="Elf">Elf</option>
+                <option selected={ veifyStats(index, "Halfling", "race") } value="Halfling">Halfling</option>
+                <option selected={ veifyStats(index, "Orc", "race") } value="Orc">Orc</option>
               </select>
             </label>
             <label>
-              <p>Classe:</p>
-              <select name="class">
-                <option value="mage">Mage</option>
-                <option value="ecromancer">Necromancer</option>
-                <option value="ranger">Ranger</option>
-                <option value="warrior">Warrior</option>
+              <p className={ styles.p }>Classe:</p>
+              <select className={ styles.input } name="class">
+                <option selected={ veifyStats(index, "Mage", "class") } value="Mage">Mage</option>
+                <option selected={ veifyStats(index, "Necromancer", "class") } value="Necromancer">Necromancer</option>
+                <option selected={ veifyStats(index, "Ranger", "class") } value="Ranger">Ranger</option>
+                <option selected={ veifyStats(index, "Warrior", "class") } value="Warrior">Warrior</option>
               </select>
             </label>
+            <button
+              onClick={ () => removePlayer(index)}
+              className={ styles.buttonRemove}
+              type='button'>X</button>
           </div>
         ))}
       </form>
+      <button
+        disabled={ players.length > 0 ? false : true}
+        onClick={ () => console.log('foi')}
+        className={ `${styles.buttonStart} ${players.length <= 0 ? styles.opacity : ''}` }>
+        Iniciar
+      </button>
     </>
   )
 }

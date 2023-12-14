@@ -1,4 +1,8 @@
 .buttonNewPlayer {
+  margin-bottom: 20px;
+}
+
+.buttonNewPlayer, .buttonStart {
   background-image: linear-gradient(to top, #aa5732, #ba6d41, #cb8252, #db9864, #ebae77);
   border: 0;
   border-radius: 10px;
@@ -11,6 +15,40 @@
   text-align: center;
 }
 
+.buttonStart {
+  position: absolute;
+  bottom: 50px;
+}
+
 .container {
   display: flex;
+}
+
+.buttonRemove {
+  align-self: flex-end;
+  background-color: transparent;
+  color: red;
+  margin-left: 10px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* margin-top: 4px; */
+}
+
+.opacity {
+  opacity: 0.5;
+}
+
+.p {
+  padding-top: 8px;
+  padding-bottom: 2px;
+}
+
+.input {
+  border-radius: 3px;
+  background-color: transparent;
+  border: 1px solid #91bd41;
+  color: rgb(92, 92, 92);
+  margin-right: 5px;
 }
