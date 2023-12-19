@@ -7,10 +7,9 @@
   margin-left: 12.5px;
 }
 
-.buttonStart {
-  /* position: absolute; */
-  /* bottom: 30px; */
-  
+.buttonStartPosition {
+  position: absolute;
+  bottom: 30px;
 }
 
 .buttonNewPlayer, .buttonStart, .buttonNewMonster {

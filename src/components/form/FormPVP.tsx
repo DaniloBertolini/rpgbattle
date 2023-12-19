@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react'
-import styles from './Form.module.css'
-
-type TypePlayer = {
-  id?: number,
-  name: string,
-  race: string,
-  class: string
-}
+import styles from './FormPVP.module.css'
+import { TypePlayer, newPlayer } from '../../utils/type';
+import { Link } from 'react-router-dom';
 
 function FormPVP() {
   const [counterId, setCounterId] = useState(1);
@@ -15,12 +10,6 @@ function FormPVP() {
   useEffect(() => {
     setCounterId(players.length + 1)
   }, [players])
-
-  const newPlayer: TypePlayer = {
-    name: 'Player',
-    race: 'Dwarf',
-    class: 'Mage'
-  }
 
   const addNewPlayer = () => {
     if (counterId === 5) return;
@@ -69,7 +58,6 @@ function FormPVP() {
 
   const veifyStats = (index: number, name: string, type: "race" | "class") =>
     (players[index][type] === name) ? true : false
-  
 
   return (
     <>
@@ -115,12 +103,13 @@ function FormPVP() {
           </div>
         ))}
       </form>
-      <button
-        disabled={ players.length > 0 ? false : true}
-        onClick={ () => console.log('foi')}
-        className={ `${styles.buttonStart} ${players.length <= 0 ? styles.opacity : ''}` }>
-        Iniciar
-      </button>
+      <Link className={ styles.buttonStartPosition} to={ '/game/pvp'}>
+        <button
+          disabled={ players.length > 1 ? false : true}
+          className={ `${styles.buttonStart} ${players.length <= 1 ? styles.opacity : ''}` }>
+          Iniciar
+        </button>
+      </Link>
     </>
   )
 }
